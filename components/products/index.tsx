@@ -1,20 +1,29 @@
 import { useEffect, useState } from "react"
+
 import { urlBase } from "../../api"
+
 import axios from "axios"
 import { View , Image, Text, StyleSheet } from "react-native"
 export const Products = () => {
 
   const [data, setData] = useState([])
-  
+
+  interface Product{
+    image: string;
+    title: string;
+    price: number;
+    id: number;
+  }
+
   useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products`)
+    urlBase.get(`/products`)
     .then(res => setData(res.data))
     .catch(err => console.error(err))
   }, [])
-
+  
   return(
     <View style={styles.containerProducts}>
-        {data?.map((item: any) =>
+        {data?.map((item: Product) =>
           <View key={item.id} style={styles.containerItem}>
             <Image source={{ uri: `${item.image}` }} style={styles.img} />
             <Text style={styles.text}>{item.title}</Text>
@@ -35,7 +44,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         gap: 7,
-        justifyContent: 'center'
+        justifyContent: 'center',
       },
       containerItem: {
         width: 170,

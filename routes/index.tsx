@@ -11,7 +11,12 @@ export const Routes = () => {
             <Stack.Screen name="Home" component={Home} options={
                 {
                     title: 'overview',
-                    headerPressOpacity: 1
+                    headerBackgroundContainerStyle:{
+                        backgroundColor: '#000',
+                        height: 100,
+                        borderColor: 'gainsboro',
+                        borderWidth: 0.1,
+                    }
                 }
             }
             />

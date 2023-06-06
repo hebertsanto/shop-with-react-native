@@ -1,9 +1,15 @@
-import { ScrollView } from "react-native/"
+import { ScrollView, StyleSheet} from "react-native/"
 import { Products } from "../../components/products"
 export const Home = () => {
   return(
-    <ScrollView>
+    <ScrollView style={style.homeContainer}>
       <Products />
     </ScrollView>
   )
 }
+
+const style = StyleSheet.create({
+    homeContainer:{
+        backgroundColor: '#fff'
+    }
+})
