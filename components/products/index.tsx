@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
-
 import { urlBase } from "../../api"
+import {Image, StyleSheet, Text,View  } from "react-native"
 
-import axios from "axios"
-import { View , Image, Text, StyleSheet } from "react-native"
 export const Products = () => {
 
   const [data, setData] = useState([])
@@ -48,7 +46,11 @@ const styles = StyleSheet.create({
       },
       containerItem: {
         width: 170,
-        marginTop: 30
+        marginTop: 30,
+        borderWidth: 0.3,
+        borderRadius: 3,
+        padding: 10,
+        
       },
       text: {
         fontSize: 12,
@@ -56,6 +58,8 @@ const styles = StyleSheet.create({
         color: 'gray'
       },
       price: {
-        color: 'green'
+        color: 'green',
+        fontSize: 17,
+        paddingTop: 10
       }
 })

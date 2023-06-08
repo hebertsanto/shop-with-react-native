@@ -10,13 +10,12 @@ export const Routes = () => {
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={Home} options={
                 {
-                    title: 'overview',
-                    headerBackgroundContainerStyle:{
-                        backgroundColor: '#000',
+                    title: 'all products',
+                    headerStyle:{
+                        backgroundColor: '#070707dc',
                         height: 100,
-                        borderColor: 'gainsboro',
-                        borderWidth: 0.1,
-                    }
+                    },
+                    headerTintColor: '#fff'
                 }
             }
             />
