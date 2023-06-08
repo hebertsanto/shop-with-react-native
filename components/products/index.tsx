@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { urlBase } from "../../api"
-import {Image, StyleSheet, Text,View  } from "react-native"
-
+import {Image, StyleSheet, Text,TouchableOpacity,View  } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 export const Products = () => {
 
   const [data, setData] = useState([])
+  const navigation = useNavigation();
 
   interface Product{
     image: string;
@@ -23,9 +24,11 @@ export const Products = () => {
     <View style={styles.containerProducts}>
         {data?.map((item: Product) =>
           <View key={item.id} style={styles.containerItem}>
+            <TouchableOpacity onPress={() => navigation.navigate('Details'as never)} activeOpacity={1}>
             <Image source={{ uri: `${item.image}` }} style={styles.img} />
             <Text style={styles.text}>{item.title}</Text>
-            <Text style={styles.price}>{item.price}</Text>
+            <Text style={styles.price}>{item.price} $US</Text>
+            </TouchableOpacity>
           </View>
         )}
         </View>
@@ -53,7 +56,7 @@ const styles = StyleSheet.create({
         
       },
       text: {
-        fontSize: 12,
+        fontSize: 15,
         paddingTop: 16,
         color: 'gray'
       },

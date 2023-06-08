@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 
 const Stack = createStackNavigator();
 import { Home } from "../pages/Home";
+import { Detail } from "../pages/details";
 
 export const Routes = () => {
   return(
@@ -15,10 +16,12 @@ export const Routes = () => {
                         backgroundColor: '#070707dc',
                         height: 100,
                     },
-                    headerTintColor: '#fff'
+                    headerTintColor: '#fff',
+                    
                 }
             }
             />
+            <Stack.Screen name="Details" component={Detail}/>
         </Stack.Navigator>
     </NavigationContainer>
   )
