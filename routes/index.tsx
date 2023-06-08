@@ -21,7 +21,7 @@ export const Routes = () => {
                 }
             }
             />
-            <Stack.Screen name="Details" component={Detail}/>
+            <Stack.Screen name="Details" component={Detail} initialParams={{ id : 1}}/>
         </Stack.Navigator>
     </NavigationContainer>
   )

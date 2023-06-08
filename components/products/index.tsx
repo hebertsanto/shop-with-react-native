@@ -7,7 +7,7 @@ export const Products = () => {
   const [data, setData] = useState([])
   const navigation = useNavigation();
 
-  interface Product{
+interface Product{
     image: string;
     title: string;
     price: number;
@@ -19,12 +19,12 @@ export const Products = () => {
     .then(res => setData(res.data))
     .catch(err => console.error(err))
   }, [])
-  
+  //fix the line 27
   return(
     <View style={styles.containerProducts}>
         {data?.map((item: Product) =>
           <View key={item.id} style={styles.containerItem}>
-            <TouchableOpacity onPress={() => navigation.navigate('Details'as never)} activeOpacity={1}>
+            <TouchableOpacity onPress={() => navigation.navigate('Details' as never, { id : item.id })} activeOpacity={1}> 
             <Image source={{ uri: `${item.image}` }} style={styles.img} />
             <Text style={styles.text}>{item.title}</Text>
             <Text style={styles.price}>{item.price} $US</Text>
