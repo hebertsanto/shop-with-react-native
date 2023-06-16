@@ -1,9 +1,10 @@
-import { NavigationContainer } from "@react-navigation/native"
+    import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 
 const Stack = createStackNavigator();
 import { Home } from "../pages/Home";
 import { Detail } from "../pages/details";
+import { Button } from "react-native";
 
 export const Routes = () => {
   return(
@@ -11,13 +12,12 @@ export const Routes = () => {
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={Home} options={
                 {
-                    title: 'all products',
+                    title: 'products',
                     headerStyle:{
-                        backgroundColor: '#070707dc',
+                        backgroundColor: '#070707',
                         height: 100,
                     },
                     headerTintColor: '#fff',
-                    
                 }
             }
             />

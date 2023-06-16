@@ -6,12 +6,12 @@ export const Products = () => {
 
   const [data, setData] = useState([])
   const navigation = useNavigation();
-
+  
 interface Product{
     image: string;
     title: string;
     price: number;
-    id: number;
+    id: any;
   }
 
   useEffect(() => {
