@@ -1,11 +1,11 @@
-import { View, Text, Image, StyleSheet, Button, Touchable, TouchableOpacity, ScrollView } from "react-native"
+import { View, Text, Image, StyleSheet, Button,TouchableOpacity, ScrollView } from "react-native"
 import { useRoute } from "@react-navigation/native"
 import { useEffect, useState } from "react";
 import { urlBase } from "../../api";
 
 export const Detail = () => {
     const route = useRoute();
-    const { id }: any = route.params;
+    const { id }: number | any = route.params;
     const [dataDetail, setDataDetail] = useState<ProductDetail>();
     const [loading, setLoading] = useState(true)
     
@@ -45,11 +45,10 @@ export const Detail = () => {
                         <Text style={styles.price}>{dataDetail?.price}$US</Text>
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.btnBuy}>
-                            <Button
-                                title="buy"
-
-                            />
+                      <TouchableOpacity style={styles.btnBuy}>
+                         <Button
+                            title="buy"
+                         />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.btnCart} onPress={() => handleAddCart}>
                             <Button

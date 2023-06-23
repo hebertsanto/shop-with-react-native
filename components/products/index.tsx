@@ -4,7 +4,7 @@ import {Image, StyleSheet, Text,TouchableOpacity,View  } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 export const Products = () => {
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState<Array <Product>>([])
   const navigation = useNavigation();
   
 interface Product{
@@ -25,7 +25,11 @@ interface Product{
         {data?.map((item: Product) =>
           <View key={item.id} style={styles.containerItem}>
             <TouchableOpacity onPress={() => navigation.navigate('Details' as never, { id : item.id })} activeOpacity={1}> 
-            <Image source={{ uri: `${item.image}` }} style={styles.img} />
+            <Image 
+             style={styles.img} 
+             resizeMode="cover"
+             source={{ uri: `${item.image}` }} 
+             />
             <Text style={styles.text}>{item.title}</Text>
             <Text style={styles.price}>{item.price} $US</Text>
             </TouchableOpacity>
