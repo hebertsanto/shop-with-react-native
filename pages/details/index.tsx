@@ -3,6 +3,7 @@ import { useRoute } from "@react-navigation/native"
 import { useEffect, useState } from "react";
 import { urlBase } from "../../api";
 import { ModalCart } from "../../components/modalCart";
+import { ProductDetail } from '../../interfaces/ProductsDetails';
 
 export const Detail = () => {
     const route = useRoute();
@@ -10,13 +11,7 @@ export const Detail = () => {
     const [dataDetail, setDataDetail] = useState<ProductDetail>();
     const [loading, setLoading] = useState(true)
     const [modalCart, setModalCart] = useState(false);
-    interface ProductDetail {
-        image: string;
-        title: string;
-        price: number;
-        id: number;
-        description: string;
-    }
+  
     useEffect(() => {
         urlBase.get(`/products/${id}`)
             .then(res => {
@@ -63,7 +58,7 @@ export const Detail = () => {
             )}
             {modalCart && 
               <ModalCart
-                 image={dataDetail?.image}
+                image={dataDetail?.image}
                 title={dataDetail?.title}
             />}
         </ScrollView>
