@@ -2,18 +2,13 @@ import { useEffect, useState } from "react"
 import { urlBase } from "../../api"
 import {Image, StyleSheet, Text,TouchableOpacity,View  } from "react-native"
 import { useNavigation } from "@react-navigation/native"
+import { ProductDetail } from '../../interfaces/ProductsDetails'
 export const Products = () => {
 
-  const [data, setData] = useState<Array <Product>>([])
+  const [data, setData] = useState<Array <ProductDetail>>([])
   const navigation = useNavigation();
   
-interface Product{
-    image: string;
-    title: string;
-    price: number;
-    id: any;
-  }
-
+ 
   useEffect(() => {
     urlBase.get(`/products`)
     .then(res => setData(res.data))
@@ -22,7 +17,7 @@ interface Product{
   //fix the line 27
   return(
     <View style={styles.containerProducts}>
-        {data?.map((item: Product) =>
+        {data?.map((item: ProductDetail) =>
           <View key={item.id} style={styles.containerItem}>
             <TouchableOpacity onPress={() => navigation.navigate('Details' as never, { id : item.id })} activeOpacity={1}> 
             <Image 

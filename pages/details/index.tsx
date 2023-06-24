@@ -6,6 +6,7 @@ import { ModalCart } from "../../components/modalCart";
 import { ProductDetail } from '../../interfaces/ProductsDetails';
 
 export const Detail = () => {
+    
     const route = useRoute();
     const { id }: number | any = route.params;
     const [dataDetail, setDataDetail] = useState<ProductDetail>();
@@ -23,7 +24,6 @@ export const Detail = () => {
 
 
     function handleAddCart(product?: ProductDetail) {
-        console.log(product)
         if (product) {
             setModalCart(true);
         } else {
@@ -60,6 +60,7 @@ export const Detail = () => {
               <ModalCart
                 image={dataDetail?.image}
                 title={dataDetail?.title}
+                price={dataDetail?.price}
             />}
         </ScrollView>
     )
