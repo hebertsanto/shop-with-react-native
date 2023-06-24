@@ -1,14 +1,15 @@
-import { View, Text, Image, StyleSheet, Button,TouchableOpacity, ScrollView } from "react-native"
+import { View, Text, Image, StyleSheet, Button, TouchableOpacity, ScrollView } from "react-native"
 import { useRoute } from "@react-navigation/native"
 import { useEffect, useState } from "react";
 import { urlBase } from "../../api";
+import { ModalCart } from "../../components/modalCart";
 
 export const Detail = () => {
     const route = useRoute();
     const { id }: number | any = route.params;
     const [dataDetail, setDataDetail] = useState<ProductDetail>();
     const [loading, setLoading] = useState(true)
-    
+    const [modalCart, setModalCart] = useState(false);
     interface ProductDetail {
         image: string;
         title: string;
@@ -29,7 +30,7 @@ export const Detail = () => {
     function handleAddCart(product?: ProductDetail) {
         console.log(product)
         if (product) {
-            alert('add cart successfully')
+            setModalCart(true);
         } else {
             console.log('error')
         }
@@ -45,21 +46,26 @@ export const Detail = () => {
                         <Text style={styles.price}>{dataDetail?.price}$US</Text>
                     </View>
                     <View>
-                      <TouchableOpacity style={styles.btnBuy}>
-                         <Button
-                            title="buy"
-                         />
+                        <TouchableOpacity style={styles.btnBuy}>
+                            <Button
+                                title="buy"
+                                onPress={() => handleAddCart(dataDetail)}
+                            />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.btnCart} onPress={() => handleAddCart}>
+                        <TouchableOpacity style={styles.btnCart}>
                             <Button
                                 title="add cart"
                                 color='#000000'
-                                onPress={() => handleAddCart(dataDetail)}
                             />
                         </TouchableOpacity>
                     </View>
                 </View>
             )}
+            {modalCart && 
+              <ModalCart
+                 image={dataDetail?.image}
+                title={dataDetail?.title}
+            />}
         </ScrollView>
     )
 }
